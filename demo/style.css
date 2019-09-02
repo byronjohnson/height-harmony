@@ -1,0 +1,28 @@
+body {
+    background: #260A11;
+    font-size: 16px;
+}
+
+.container {
+    padding: 1rem;
+}
+
+.container .inner-block {
+    background: #59112B;
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 55%;
+}
+
+.block-one, .block-two {
+    padding: 1rem;
+}
+
+.block-one {
+    background: #F28F6B;
+}
+
+.block-two {
+    background: #79F2A4;
+    margin-top: 1rem;
+}
