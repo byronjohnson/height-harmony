@@ -1,0 +1,1 @@
+function heightHarmony(h){var i=0;jQuery(h).each(function(){$(this).css("height",""),i=i>$(this).height()?i:$(this).height()}),jQuery(h).height(i)}

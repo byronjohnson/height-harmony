@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+        <script src="../src/height-harmony-min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="inner-block">
+                <div class="block-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper mauris. </div>
+                <div class="block-two">Phasellus quis nibh sed ante mollis facilisis ac sed justo. </div>
+            </div>
+            <div class="inner-block">
+                <div class="block-one">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante.</div> 
+                <div class="block-two">Aenean interdum ipsum massa, ac ultrices eros cursus rutrum. Quisque fermentum ac leo ac eleifend. In felis risus, accumsan vitae porttitor a, ultrices et sapien. Suspendisse potenti. Nullam id nulla neque. Pellentesque egestas, lectus id tincidunt facilisis, neque est molestie augue, vel elementum nulla mi et purus. </div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Class aptent taciti sociosqu ad litora torquent per conubia nostra</div>
+                    <div class="block-two">per inceptos himenaeos.</div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Proin eget nunc nec nisi mattis molestie in ultrices urna. Cras tempus ipsum non justo fringilla, in suscipit ex fermentum.</div>
+                    <div class="block-two">Cras metus neque, porttitor id accumsan ac, tincidunt eu est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Ut dapibus molestie lacus, nec sollicitudin eros molestie eget. Pellentesque in cursus ligula, vel volutpat diam.</div>
+                    <div class="block-two">Mauris porta lacus id purus accumsan, et vulputate erat pretium. Donec eu vulputate velit.</div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Aliquam auctor magna a sem pulvinar, non finibus enim vestibulum. Nam a justo volutpat</div>
+                    <div class="block-two">porttitor nisi at, pulvinar orci. Nulla aliquet porta odio, non vulputate mi cursus vel. Proin vel dolor vel sem sodales semper. </div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Cras sed diam volutpat, maximus urna quis, imperdiet sapien. Donec at mauris enim.</div>
+                    <div class="block-two">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et malesuada </div>
+            </div>
+            <div class="inner-block">
+                    <div class="block-one">Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante. Aenean interdum ipsum massa,</div>
+                    <div class="block-two">ac ultrices eros cursus rutrum.</div>
+            </div>
+        </div>
+        
+        <script>
+            (function($) {
+                $(document).ready(function(){
+                    heightHarmony('.block-one');
+                    heightHarmony('.block-two');
+                    heightHarmony('.inner-block');
+                });
+
+                $(window).resize( function(){
+                    heightHarmony('.block-one');
+                    heightHarmony('.block-two');
+                    heightHarmony('.inner-block');
+                });
+            })(jQuery);
+        </script>
+
+    </body>
+</html>
