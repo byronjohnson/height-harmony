@@ -25,4 +25,4 @@ $(window).resize(function(){
 ```
 
 ## Demo
-[Click here to view the demo](https://htmlpreview.github.io/?https://github.com/byronjohnson/height-harmony/blob/master/demo/demo.html).
+[Click here to view the demo](https://htmlpreview.github.io/?https://github.com/byronjohnson/height-harmony/blob/master/demo/demo.html)
