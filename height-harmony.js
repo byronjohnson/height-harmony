@@ -27,11 +27,6 @@ function heightHarmony(selector) {
             // Get the element's height
             const elementHeight = element.offsetHeight;
             
-            if (element.classList.contains('inner-block')) {
-                console.log(element);
-                console.log(`Element height: ${elementHeight}px`);
-            }
-            
             // Update maxHeight if this element is taller
             maxHeight = Math.max(maxHeight, elementHeight);
         });
