@@ -14,12 +14,6 @@ Height Harmony automatically sets all matching elements to the same height based
 <script src="height-harmony.js"></script>
 ```
 
-### NPM (coming soon)
-
-```bash
-npm install height-harmony
-```
-
 ## Basic Usage
 
 ```javascript

@@ -1,5 +1,21 @@
+/* Define color theme as CSS variables */
+:root {
+    --poseidon-1: #012030;
+    --poseidon-2: #13678A;
+    --poseidon-3: #45C4B0;
+    --poseidon-4: #9AEBA3;
+    --poseidon-5: #DAFDBA;
+}
+
+/* Color Theme Swatches using variables */
+.poseidon-1-hex { color: var(--poseidon-1); }
+.poseidon-2-hex { color: var(--poseidon-2); }
+.poseidon-3-hex { color: var(--poseidon-3); }
+.poseidon-4-hex { color: var(--poseidon-4); }
+.poseidon-5-hex { color: var(--poseidon-5); }
+
 body {
-    background: #012030;
+    background: var(--poseidon-1);
     font-size: 16px;
 }
 
@@ -13,22 +29,23 @@ body {
 }
 
 .container .inner-block {
-    background: #13678A;
+    background: var(--poseidon-2);
     flex-basis: 46%;
     margin: 2rem auto;
     padding: 1rem 1rem 0 1rem;
 }
 
 .block-one, .block-two {
+    color: var(--poseidon-1);
     padding: 1rem;
 }
 
 .block-one {
-    background: #9AEBA3;
+    background: var(--poseidon-4);
 }
 
 .block-two {
-    background: #DAFDBA;
+    background: var(--poseidon-5);
     margin-top: 1rem;
 }
 
