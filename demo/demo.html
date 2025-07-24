@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
-        <script src="../height-harmony-min.js"></script>
+        <script src="../height-harmony.js"></script>
     </head>
     <body>
         <div class="container">
@@ -50,19 +50,29 @@
         </div>
         
         <script>
-            (function($) {
-                $(document).ready(function(){
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-                    heightHarmony('.inner-block');
-                });
+            // Initialize height harmony when the DOM is ready
+            document.addEventListener('DOMContentLoaded', function() {
+                // Apply initial height harmonization
+                heightHarmony('.block-one');
+                heightHarmony('.block-two');
+                heightHarmony('.inner-block');
+            });
 
-                $(window).resize( function(){
+            // Create a variable to store the timeout ID
+            let resizeTimeout;
+
+            // Handle window resize with vanilla JavaScript
+            window.addEventListener('resize', function() {
+                // Clear any existing timeout
+                clearTimeout(resizeTimeout);
+                
+                // Set a new timeout
+                resizeTimeout = setTimeout(function() {
                     heightHarmony('.block-one');
                     heightHarmony('.block-two');
                     heightHarmony('.inner-block');
-                });
-            })(jQuery);
+                }, 500);
+            });
         </script>
 
     </body>

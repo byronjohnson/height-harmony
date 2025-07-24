@@ -4,14 +4,19 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1200px;
     padding: 1rem;
 }
 
 .container .inner-block {
     background: #59112B;
+    flex-basis: 46%;
     margin: 2rem auto;
     padding: 1rem;
-    width: 55%;
 }
 
 .block-one, .block-two {
@@ -25,4 +30,17 @@ body {
 .block-two {
     background: #79F2A4;
     margin-top: 1rem;
+}
+
+/* Media queries moved outside as standard CSS */
+@media screen and (max-width: 1024px) {
+    .container .inner-block {
+        flex-basis: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container .inner-block {
+        flex-basis: 40%;
+    }
 }
