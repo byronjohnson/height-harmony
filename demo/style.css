@@ -289,6 +289,16 @@ body {
     background: var(--poseidon-1);
     border-top: 1px solid rgba(69, 196, 176, 0.2);
     margin-top: 4rem;
+
+    a.github-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            margin-left: 5px;
+        }
+    }
 }
 
 .footer p {
@@ -307,6 +317,7 @@ body {
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 
 .footer a:hover {
     color: var(--poseidon-4);
