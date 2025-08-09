@@ -1,6 +1,6 @@
 /* Define color theme as CSS variables */
 :root {
-    --poseidon-1: #012030;
+    --poseidon-1: red;
     --poseidon-2: #13678A;
     --poseidon-3: #45C4B0;
     --poseidon-4: #9AEBA3;
