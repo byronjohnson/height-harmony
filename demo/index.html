@@ -6,14 +6,86 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
+        <title>Height Harmony.js - Dynamic Height Balancing for Perfect Layouts</title>
+        <meta name="description" content="A lightweight JavaScript library for dynamically harmonizing element heights. Create perfectly aligned layouts with automatic height balancing for responsive web design.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="JavaScript, height balancing, responsive design, layout, CSS, frontend, web development, equal heights, dynamic sizing">
+        <meta name="author" content="Height Harmony.js">
+        <meta name="robots" content="index, follow">
+        <link rel="canonical" href="https://username.github.io/height-harmony/demo/">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://username.github.io/height-harmony/demo/">
+        <meta property="og:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
+        <meta property="og:description" content="See Height Harmony.js in action! A lightweight JavaScript library that automatically balances element heights for perfect responsive layouts.">
+        <meta property="og:image" content="https://username.github.io/height-harmony/demo/og-image.png">
+        <meta property="og:site_name" content="Height Harmony.js">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://username.github.io/height-harmony/demo/">
+        <meta property="twitter:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
+        <meta property="twitter:description" content="See Height Harmony.js in action! Automatic height balancing for perfect responsive layouts.">
+        <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
+        
+        <!-- Favicon and Icons -->
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+        <link rel="manifest" href="site.webmanifest">
+        <meta name="theme-color" content="#012030">
+        
+        <!-- Preload critical resources -->
+        <link rel="preload" href="style.css" as="style">
+        <link rel="preload" href="../height-harmony-min.js" as="script">
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" crossorigin>
+        
         <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
         <script src="../height-harmony-min.js"></script>
+        
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Height Harmony.js",
+            "description": "A lightweight JavaScript library for dynamically harmonizing element heights in responsive web layouts",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Web Browser",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            },
+            "author": {
+                "@type": "Organization",
+                "name": "Height Harmony.js"
+            }
+        }
+        </script>
     </head>
     <body>
-        <div class="container">
+        <header class="hero" role="banner">
+            <div class="hero-content">
+                <h1 class="hero-title">Height Harmony.js</h1>
+                <p class="hero-subtitle">Dynamic height balancing for perfectly aligned layouts</p>
+                <div class="demo-indicator" role="status" aria-label="Live demo indicator">
+                    <div class="indicator-pulse" aria-hidden="true"></div>
+                    <span class="indicator-text">Watch the magic happen as you resize the window</span>
+                    <div class="indicator-pulse" aria-hidden="true"></div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="demo-section" role="main">
+            <div class="section-header">
+                <h2>Live Demo</h2>
+                <p>These content blocks automatically adjust their heights to create perfect visual harmony</p>
+            </div>
+            <section class="container" aria-label="Height Harmony demonstration with sample content blocks">
             <div class="inner-block">
                 <div class="block-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper mauris. </div>
                 <div class="block-two">Phasellus quis nibh sed ante mollis facilisis ac sed justo. </div>
@@ -46,15 +118,47 @@
                     <div class="block-one">Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante. Aenean interdum ipsum massa,</div>
                     <div class="block-two">ac ultrices eros cursus rutrum.</div>
             </div>
-        </div>
+        </section>
+        </main>
+        
+        <footer class="footer" role="contentinfo">
+            <p>&copy; 2024 Height Harmony.js - Creating beautiful, balanced layouts</p>
+            <p><a href="https://github.com/username/height-harmony" aria-label="View Height Harmony.js on GitHub">View on GitHub</a></p>
+        </footer>
         
         <script>
+            // Function to reset all heights before reapplying harmony
+            function resetHeights() {
+                // Reset inner-block heights
+                document.querySelectorAll('.inner-block').forEach(function(element) {
+                    element.style.height = 'auto';
+                });
+                
+                // Reset block heights
+                document.querySelectorAll('.block-one, .block-two').forEach(function(element) {
+                    element.style.height = 'auto';
+                });
+            }
+
+            // Function to apply all height harmonizations
+            function applyHeightHarmony() {
+                // Reset heights first to get natural dimensions
+                resetHeights();
+                
+                // Small delay to allow layout to settle before measuring
+                setTimeout(function() {
+                    // Apply height harmony to content blocks first
+                    heightHarmony('.block-one');
+                    heightHarmony('.block-two');
+                    
+                    // Then apply to parent containers
+                    heightHarmony('.inner-block');
+                }, 10);
+            }
+
             // Initialize height harmony when the DOM is ready
             document.addEventListener('DOMContentLoaded', function() {
-                // Apply initial height harmonization
-                heightHarmony('.block-one');
-                heightHarmony('.block-two');
-                heightHarmony('.inner-block');
+                applyHeightHarmony();
             });
 
             // Create a variable to store the timeout ID
@@ -65,13 +169,29 @@
                 // Clear any existing timeout
                 clearTimeout(resizeTimeout);
                 
-                // Set a new timeout
+                // Set a new timeout with proper reset and reapplication
                 resizeTimeout = setTimeout(function() {
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-                    heightHarmony('.inner-block');
-                }, 200);
+                    applyHeightHarmony();
+                }, 150);
             });
+
+            // Also handle orientation change for mobile devices
+            window.addEventListener('orientationchange', function() {
+                setTimeout(function() {
+                    applyHeightHarmony();
+                }, 300);
+            });
+        </script>
+        
+        <!-- GitHub Pages Analytics (optional - replace with your tracking ID) -->
+        <script>
+            // Basic page view tracking for GitHub Pages
+            if (typeof gtag !== 'undefined') {
+                gtag('config', 'GA_TRACKING_ID', {
+                    page_title: 'Height Harmony.js Demo',
+                    page_location: window.location.href
+                });
+            }
         </script>
 
     </body>
