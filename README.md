@@ -8,6 +8,27 @@ A lightweight, zero-dependency JavaScript utility for equalizing element heights
 
 ## Installation
 
+### NPM
+```bash
+npm install height-harmony
+```
+
+```javascript
+import heightHarmony from 'height-harmony';
+// or
+const heightHarmony = require('height-harmony');
+```
+
+### CDN
+```html
+<!-- Latest version -->
+<script src="https://unpkg.com/height-harmony@latest/height-harmony-min.js"></script>
+
+<!-- Specific version -->
+<script src="https://unpkg.com/height-harmony@1.0.0/height-harmony-min.js"></script>
+```
+
+### Direct Download
 ```html
 <script src="height-harmony.js"></script>
 ```

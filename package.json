@@ -1,0 +1,45 @@
+{
+  "name": "height-harmony",
+  "version": "1.0.0",
+  "description": "A lightweight, zero-dependency JavaScript utility for equalizing element heights",
+  "main": "height-harmony.js",
+  "module": "height-harmony.js",
+  "browser": "height-harmony-min.js",
+  "unpkg": "height-harmony-min.js",
+  "jsdelivr": "height-harmony-min.js",
+  "files": [
+    "height-harmony.js",
+    "height-harmony-min.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo 'No build step required - files are ready to publish'",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/byronjohnson/height-harmony.git"
+  },
+  "homepage": "https://github.com/byronjohnson/height-harmony#readme",
+  "bugs": {
+    "url": "https://github.com/byronjohnson/height-harmony/issues"
+  },
+  "keywords": [
+    "javascript",
+    "height",
+    "equalize",
+    "responsive",
+    "css",
+    "utility",
+    "frontend",
+    "dom",
+    "elements"
+  ],
+  "author": "Byron Johnson",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
