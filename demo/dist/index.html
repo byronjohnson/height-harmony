@@ -30,79 +30,18 @@
         <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
         
         <!-- Favicon and Icons -->
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/assets/favicon-D_hlhyj_.ico">
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
         <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-        <link rel="manifest" href="site.webmanifest">
+        <link rel="manifest" href="/assets/site-SDQCe1QX.webmanifest">
         <meta name="theme-color" content="#012030">
         
         <!-- Preload critical resources -->
-        <link rel="preload" href="style.css" as="style">
-        <link rel="preload" href="../height-harmony.js" as="script">
+        <link rel="preload" href="data:text/javascript;base64,LyoqCiAqIFNldHMgYWxsIG1hdGNoaW5nIGVsZW1lbnRzIHRvIHRoZSBzYW1lIGhlaWdodCAodGhlIGhlaWdodCBvZiB0aGUgdGFsbGVzdCBlbGVtZW50KQogKiBAcGFyYW0ge3N0cmluZ30gc2VsZWN0b3IgLSBDU1Mgc2VsZWN0b3IgZm9yIHRoZSBlbGVtZW50cyB0byBoYXJtb25pemUKICovCmZ1bmN0aW9uIGhlaWdodEhhcm1vbnkoc2VsZWN0b3IpIHsKICAgIC8vIEdldCBhbGwgbWF0Y2hpbmcgZWxlbWVudHMKICAgIGNvbnN0IGVsZW1lbnRzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChzZWxlY3Rvcik7CgogICAgLy8gRXhpdCBpZiBubyBlbGVtZW50cyBmb3VuZAogICAgaWYgKGVsZW1lbnRzLmxlbmd0aCA9PT0gMCkgcmV0dXJuOwoKICAgIC8vIEZpcnN0IHBhc3M6IFJlc2V0IGFsbCBoZWlnaHRzIHRvIDBweCB0byBjbGVhciBhbnkgcHJldmlvdXMgc3R5bGluZyBjb21wbGV0ZWx5CiAgICBlbGVtZW50cy5mb3JFYWNoKGVsZW1lbnQgPT4gewogICAgICAgIGVsZW1lbnQuc3R5bGUuaGVpZ2h0ID0gJzBweCc7CiAgICB9KTsKCiAgICAvLyBTbWFsbCBkZWxheSB0byBlbnN1cmUgdGhlIGJyb3dzZXIgaGFzIGFwcGxpZWQgdGhlIDBweCBoZWlnaHQKICAgIHNldFRpbWVvdXQoKCkgPT4gewogICAgICAgIC8vIFJlc2V0IGhlaWdodHMgdG8gYXV0byB0byBnZXQgbmF0dXJhbCBoZWlnaHRzCiAgICAgICAgbGV0IG1heEhlaWdodCA9IDA7CgogICAgICAgIC8vIEZpbmQgdGhlIG1heGltdW0gbmF0dXJhbCBoZWlnaHQKICAgICAgICBlbGVtZW50cy5mb3JFYWNoKGVsZW1lbnQgPT4gewogICAgICAgICAgICAvLyBSZXNldCB0byBlbXB0eSBzdHJpbmcgdG8gZ2V0IG5hdHVyYWwgaGVpZ2h0CiAgICAgICAgICAgIGVsZW1lbnQuc3R5bGUuaGVpZ2h0ID0gJyc7CgogICAgICAgICAgICAvLyBHZXQgdGhlIGVsZW1lbnQncyBoZWlnaHQKICAgICAgICAgICAgY29uc3QgZWxlbWVudEhlaWdodCA9IGVsZW1lbnQub2Zmc2V0SGVpZ2h0OwoKICAgICAgICAgICAgLy8gVXBkYXRlIG1heEhlaWdodCBpZiB0aGlzIGVsZW1lbnQgaXMgdGFsbGVyCiAgICAgICAgICAgIG1heEhlaWdodCA9IE1hdGgubWF4KG1heEhlaWdodCwgZWxlbWVudEhlaWdodCk7CiAgICAgICAgfSk7CgogICAgICAgIC8vIFNldCBhbGwgZWxlbWVudHMgdG8gdGhlIG1heGltdW0gaGVpZ2h0CiAgICAgICAgZWxlbWVudHMuZm9yRWFjaChlbGVtZW50ID0+IHsKICAgICAgICAgICAgZWxlbWVudC5zdHlsZS5oZWlnaHQgPSBtYXhIZWlnaHQgKyAncHgnOwogICAgICAgIH0pOwogICAgfSwgMCk7Cn0KCi8vIEV4cG9ydCB0aGUgZnVuY3Rpb24gYXMgdGhlIGRlZmF1bHQgZXhwb3J0CmV4cG9ydCBkZWZhdWx0IGhlaWdodEhhcm1vbnk7" as="script">
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" crossorigin>
         
-        <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <script type="module">
-            import heightHarmony from '../height-harmony.js';
-            
-            // Function to reset all heights before reapplying harmony
-            function resetHeights() {
-                // Reset inner-block heights
-                document.querySelectorAll('.inner-block').forEach(function(element) {
-                    element.style.height = 'auto';
-                });
-                
-                // Reset block heights
-                document.querySelectorAll('.block-one, .block-two').forEach(function(element) {
-                    element.style.height = 'auto';
-                });
-            }
-
-            // Function to apply all height harmonizations
-            function applyHeightHarmony() {
-                // Reset heights first to get natural dimensions
-                resetHeights();
-                
-                // Small delay to allow layout to settle before measuring
-                setTimeout(function() {
-                    // Apply height harmony to content blocks first
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-                    
-                    // Then apply to parent containers
-                    heightHarmony('.inner-block');
-                }, 10);
-            }
-
-            // Initialize height harmony when the DOM is ready
-            document.addEventListener('DOMContentLoaded', function() {
-                applyHeightHarmony();
-            });
-
-            // Create a variable to store the timeout ID
-            let resizeTimeout;
-
-            // Handle window resize with vanilla JavaScript
-            window.addEventListener('resize', function() {
-                // Clear any existing timeout
-                clearTimeout(resizeTimeout);
-                
-                // Set a new timeout with proper reset and reapplication
-                resizeTimeout = setTimeout(function() {
-                    applyHeightHarmony();
-                }, 150);
-            });
-
-            // Also handle orientation change for mobile devices
-            window.addEventListener('orientationchange', function() {
-                setTimeout(function() {
-                    applyHeightHarmony();
-                }, 300);
-            });
-        </script>
-        <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
@@ -121,6 +60,8 @@
             }
         }
         </script>
+      <script type="module" crossorigin src="/assets/index-C5SSxTVz.js"></script>
+      <link rel="stylesheet" crossorigin href="/assets/index-B3im2oov.css">
     </head>
     <body>
         <header class="hero" role="banner">

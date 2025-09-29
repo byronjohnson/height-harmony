@@ -1,0 +1,11 @@
+{
+    "name": "Height Harmony.js Demo",
+    "short_name": "HeightHarmony",
+    "description": "Dynamic height balancing for perfect layouts - Height Harmony.js demo",
+    "theme_color": "#012030",
+    "background_color": "#012030",
+    "display": "standalone",
+    "start_url": "./",
+    "scope": "./",
+    "orientation": "any"
+}
