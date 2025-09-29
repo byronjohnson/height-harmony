@@ -2,107 +2,114 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Height Harmony.js - Dynamic Height Balancing for Perfect Layouts</title>
-        <meta name="description" content="A lightweight JavaScript library for dynamically harmonizing element heights. Create perfectly aligned layouts with automatic height balancing for responsive web design.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="keywords" content="JavaScript, height balancing, responsive design, layout, CSS, frontend, web development, equal heights, dynamic sizing">
-        <meta name="author" content="Height Harmony.js">
-        <meta name="robots" content="index, follow">
-        <link rel="canonical" href="https://username.github.io/height-harmony/demo/">
-        
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="https://username.github.io/height-harmony/demo/">
-        <meta property="og:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
-        <meta property="og:description" content="See Height Harmony.js in action! A lightweight JavaScript library that automatically balances element heights for perfect responsive layouts.">
-        <meta property="og:image" content="https://username.github.io/height-harmony/demo/og-image.png">
-        <meta property="og:site_name" content="Height Harmony.js">
-        
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image">
-        <meta property="twitter:url" content="https://username.github.io/height-harmony/demo/">
-        <meta property="twitter:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
-        <meta property="twitter:description" content="See Height Harmony.js in action! Automatic height balancing for perfect responsive layouts.">
-        <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
-        
-        <!-- Favicon and Icons -->
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-        <link rel="manifest" href="site.webmanifest">
-        <meta name="theme-color" content="#012030">
-        
-        <!-- Preload critical resources -->
-        <link rel="preload" href="style.css" as="style">
-        <link rel="preload" href="../height-harmony.js" as="script">
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" crossorigin>
-        
-        <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <script type="module">
-            import heightHarmony from '../height-harmony.js';
-            
-            // Function to reset all heights before reapplying harmony
-            function resetHeights() {
-                // Reset inner-block heights
-                document.querySelectorAll('.inner-block').forEach(function(element) {
-                    element.style.height = 'auto';
-                });
-                
-                // Reset block heights
-                document.querySelectorAll('.block-one, .block-two').forEach(function(element) {
-                    element.style.height = 'auto';
-                });
-            }
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
 
-            // Function to apply all height harmonizations
-            function applyHeightHarmony() {
-                // Reset heights first to get natural dimensions
-                resetHeights();
-                
-                // Small delay to allow layout to settle before measuring
-                setTimeout(function() {
-                    // Apply height harmony to content blocks first
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-                    
-                    // Then apply to parent containers
-                    heightHarmony('.inner-block');
-                }, 10);
-            }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Height Harmony.js - Dynamic Height Balancing for Perfect Layouts</title>
+    <meta name="description"
+        content="A lightweight JavaScript library for dynamically harmonizing element heights. Create perfectly aligned layouts with automatic height balancing for responsive web design.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords"
+        content="JavaScript, height balancing, responsive design, layout, CSS, frontend, web development, equal heights, dynamic sizing">
+    <meta name="author" content="Height Harmony.js">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://username.github.io/height-harmony/demo/">
 
-            // Initialize height harmony when the DOM is ready
-            document.addEventListener('DOMContentLoaded', function() {
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://username.github.io/height-harmony/demo/">
+    <meta property="og:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
+    <meta property="og:description"
+        content="See Height Harmony.js in action! A lightweight JavaScript library that automatically balances element heights for perfect responsive layouts.">
+    <meta property="og:image" content="https://username.github.io/height-harmony/demo/og-image.png">
+    <meta property="og:site_name" content="Height Harmony.js">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://username.github.io/height-harmony/demo/">
+    <meta property="twitter:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
+    <meta property="twitter:description"
+        content="See Height Harmony.js in action! Automatic height balancing for perfect responsive layouts.">
+    <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="theme-color" content="#012030">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="../height-harmony.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+        as="style" crossorigin>
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script type="module">
+        import heightHarmony from '../height-harmony.js';
+
+        // Function to reset all heights before reapplying harmony
+        function resetHeights() {
+            // Reset inner-block heights
+            document.querySelectorAll('.inner-block').forEach(function (element) {
+                element.style.height = 'auto';
+            });
+
+            // Reset block heights
+            document.querySelectorAll('.block-one, .block-two').forEach(function (element) {
+                element.style.height = 'auto';
+            });
+        }
+
+        // Function to apply all height harmonizations
+        function applyHeightHarmony() {
+            // Reset heights first to get natural dimensions
+            resetHeights();
+
+            // Small delay to allow layout to settle before measuring
+            setTimeout(function () {
+                // Apply height harmony to content blocks first
+                heightHarmony('.block-one');
+                heightHarmony('.block-two');
+
+                // Then apply to parent containers
+                heightHarmony('.inner-block');
+            }, 10);
+        }
+
+        // Initialize height harmony when the DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            applyHeightHarmony();
+        });
+
+        // Create a variable to store the timeout ID
+        let resizeTimeout;
+
+        // Handle window resize with vanilla JavaScript
+        window.addEventListener('resize', function () {
+            // Clear any existing timeout
+            clearTimeout(resizeTimeout);
+
+            // Set a new timeout with proper reset and reapplication
+            resizeTimeout = setTimeout(function () {
                 applyHeightHarmony();
-            });
+            }, 150);
+        });
 
-            // Create a variable to store the timeout ID
-            let resizeTimeout;
-
-            // Handle window resize with vanilla JavaScript
-            window.addEventListener('resize', function() {
-                // Clear any existing timeout
-                clearTimeout(resizeTimeout);
-                
-                // Set a new timeout with proper reset and reapplication
-                resizeTimeout = setTimeout(function() {
-                    applyHeightHarmony();
-                }, 150);
-            });
-
-            // Also handle orientation change for mobile devices
-            window.addEventListener('orientationchange', function() {
-                setTimeout(function() {
-                    applyHeightHarmony();
-                }, 300);
-            });
-        </script>
-        <script type="application/ld+json">
+        // Also handle orientation change for mobile devices
+        window.addEventListener('orientationchange', function () {
+            setTimeout(function () {
+                applyHeightHarmony();
+            }, 300);
+        });
+    </script>
+    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
@@ -121,67 +128,89 @@
             }
         }
         </script>
-    </head>
-    <body>
-        <header class="hero" role="banner">
-            <div class="hero-content">
-                <h1 class="hero-title">Height Harmony.js</h1>
-                <p class="hero-subtitle">Dynamic height balancing for perfectly aligned layouts</p>
-                <div class="demo-indicator" role="status" aria-label="Live demo indicator">
-                    <div class="indicator-pulse" aria-hidden="true"></div>
-                    <span class="indicator-text">Watch the magic happen as you resize the window</span>
-                    <div class="indicator-pulse" aria-hidden="true"></div>
-                </div>
+</head>
+
+<body>
+    <header class="hero" role="banner">
+        <div class="hero-content">
+            <h1 class="hero-title">Height Harmony.js</h1>
+            <p class="hero-subtitle">Dynamic height balancing for perfectly aligned layouts</p>
+            <div class="demo-indicator" role="status" aria-label="Live demo indicator">
+                <div class="indicator-pulse" aria-hidden="true"></div>
+                <span class="indicator-text">Watch the magic happen as you resize the window</span>
+                <div class="indicator-pulse" aria-hidden="true"></div>
             </div>
-        </header>
-        
-        <main class="demo-section" role="main">
-            <div class="section-header">
-                <h2>Live Demo</h2>
-                <p>These content blocks automatically adjust their heights to create even heights across all content blocks, creating perfect visual harmony.</p>
-            </div>
-            <section class="container" aria-label="Height Harmony demonstration with sample content blocks">
+        </div>
+    </header>
+
+    <main class="demo-section" role="main">
+        <div class="section-header">
+            <h2>Live Demo</h2>
+            <p>These content blocks automatically adjust their heights to create even heights across all content blocks,
+                creating perfect visual harmony.</p>
+        </div>
+        <section class="container" aria-label="Height Harmony demonstration with sample content blocks">
             <div class="inner-block">
-                <div class="block-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper mauris. </div>
+                <div class="block-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper
+                    mauris. </div>
                 <div class="block-two">Phasellus quis nibh sed ante mollis facilisis ac sed justo. </div>
             </div>
             <div class="inner-block">
-                <div class="block-one">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante.</div> 
-                <div class="block-two">Aenean interdum ipsum massa, ac ultrices eros cursus rutrum. Quisque fermentum ac leo ac eleifend. In felis risus, accumsan vitae porttitor a, ultrices et sapien. Suspendisse potenti. Nullam id nulla neque. Pellentesque egestas, lectus id tincidunt facilisis, neque est molestie augue, vel elementum nulla mi et purus. </div>
+                <div class="block-one">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et
+                    malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante.</div>
+                <div class="block-two">Aenean interdum ipsum massa, ac ultrices eros cursus rutrum. Quisque fermentum ac
+                    leo ac eleifend. In felis risus, accumsan vitae porttitor a, ultrices et sapien. Suspendisse
+                    potenti. Nullam id nulla neque. Pellentesque egestas, lectus id tincidunt facilisis, neque est
+                    molestie augue, vel elementum nulla mi et purus. </div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Class aptent taciti sociosqu ad litora torquent per conubia nostra</div>
-                    <div class="block-two">per inceptos himenaeos.</div>
+                <div class="block-one">Class aptent taciti sociosqu ad litora torquent per conubia nostra</div>
+                <div class="block-two">per inceptos himenaeos.</div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Proin eget nunc nec nisi mattis molestie in ultrices urna. Cras tempus ipsum non justo fringilla, in suscipit ex fermentum.</div>
-                    <div class="block-two">Cras metus neque, porttitor id accumsan ac, tincidunt eu est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+                <div class="block-one">Proin eget nunc nec nisi mattis molestie in ultrices urna. Cras tempus ipsum non
+                    justo fringilla, in suscipit ex fermentum.</div>
+                <div class="block-two">Cras metus neque, porttitor id accumsan ac, tincidunt eu est. Orci varius natoque
+                    penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Ut dapibus molestie lacus, nec sollicitudin eros molestie eget. Pellentesque in cursus ligula, vel volutpat diam.</div>
-                    <div class="block-two">Mauris porta lacus id purus accumsan, et vulputate erat pretium. Donec eu vulputate velit.</div>
+                <div class="block-one">Ut dapibus molestie lacus, nec sollicitudin eros molestie eget. Pellentesque in
+                    cursus ligula, vel volutpat diam.</div>
+                <div class="block-two">Mauris porta lacus id purus accumsan, et vulputate erat pretium. Donec eu
+                    vulputate velit.</div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Aliquam auctor magna a sem pulvinar, non finibus enim vestibulum. Nam a justo volutpat</div>
-                    <div class="block-two">porttitor nisi at, pulvinar orci. Nulla aliquet porta odio, non vulputate mi cursus vel. Proin vel dolor vel sem sodales semper. </div>
+                <div class="block-one">Aliquam auctor magna a sem pulvinar, non finibus enim vestibulum. Nam a justo
+                    volutpat</div>
+                <div class="block-two">porttitor nisi at, pulvinar orci. Nulla aliquet porta odio, non vulputate mi
+                    cursus vel. Proin vel dolor vel sem sodales semper. </div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Cras sed diam volutpat, maximus urna quis, imperdiet sapien. Donec at mauris enim.</div>
-                    <div class="block-two">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et malesuada </div>
+                <div class="block-one">Cras sed diam volutpat, maximus urna quis, imperdiet sapien. Donec at mauris
+                    enim.</div>
+                <div class="block-two">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et
+                    malesuada </div>
             </div>
             <div class="inner-block">
-                    <div class="block-one">Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante. Aenean interdum ipsum massa,</div>
-                    <div class="block-two">ac ultrices eros cursus rutrum.</div>
+                <div class="block-one">Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed
+                    eleifend ante. Aenean interdum ipsum massa,</div>
+                <div class="block-two">ac ultrices eros cursus rutrum.</div>
             </div>
         </section>
-        </main>
-        
-        <footer class="footer" role="contentinfo">
-            <p>&copy; 2024 Height Harmony.js - Creating beautiful, balanced layouts</p>
-            <p><a class="github-link" href="https://github.com/username/height-harmony" aria-label="View Height Harmony.js on GitHub">View on GitHub <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a></p>
-            <p>a <a href="https://byronj.me" target="_blank">byron johnson</a> project</p>
-        </footer>
-        
+    </main>
 
-    </body>
+    <footer class="footer" role="contentinfo">
+        <p>&copy; 2024 Height Harmony.js - Creating beautiful, balanced layouts</p>
+        <p><a class="github-link" href="https://github.com/username/height-harmony"
+                aria-label="View Height Harmony.js on GitHub">View on GitHub <svg width="16" height="16"
+                    viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg></a></p>
+        <p>a <a href="https://byronj.me" target="_blank">byron johnson</a> project</p>
+    </footer>
+
+
+</body>
+
 </html>
