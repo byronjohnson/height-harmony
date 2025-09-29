@@ -1,7 +1,7 @@
 /**
  * Sets all matching elements to the same height (the height of the tallest element)
  * @param {string} selector - CSS selector for the elements to harmonize
- * @version 1.0.0
+ * @version 1.0.1
  */
 function heightHarmony(selector) {
     // Get all matching elements
