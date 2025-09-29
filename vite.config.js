@@ -7,7 +7,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'height-harmony.js'),
       name: 'heightHarmony',
       fileName: 'height-harmony-min',
-      formats: ['iife']
+      formats: ['es']
     },
     outDir: 'dist',
     emptyOutDir: true,

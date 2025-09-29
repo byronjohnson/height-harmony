@@ -1,1 +1,22 @@
-this.heightHarmony=function(){"use strict";function t(t){const e=document.querySelectorAll(t);0!==e.length&&(e.forEach(t=>{t.style.height="0px"}),requestAnimationFrame(()=>{let t=0;e.forEach(e=>{e.style.height="";const h=e.offsetHeight;t=Math.max(t,h)}),e.forEach(e=>{e.style.height=t+"px"})}))}return t.version="1.0.0",t}();
+function heightHarmony(selector) {
+  const elements = document.querySelectorAll(selector);
+  if (elements.length === 0) return;
+  elements.forEach((element) => {
+    element.style.height = "0px";
+  });
+  requestAnimationFrame(() => {
+    let maxHeight = 0;
+    elements.forEach((element) => {
+      element.style.height = "";
+      const elementHeight = element.offsetHeight;
+      maxHeight = Math.max(maxHeight, elementHeight);
+    });
+    elements.forEach((element) => {
+      element.style.height = maxHeight + "px";
+    });
+  });
+}
+heightHarmony.version = "1.0.0";
+export {
+  heightHarmony as default
+};
