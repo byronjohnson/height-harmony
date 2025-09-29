@@ -1,1 +1,0 @@
-function heightHarmony(t){const e=document.querySelectorAll(t);if(e.length===0)return;e.forEach(t=>{t.style.height="0px"});setTimeout(()=>{let h=0;e.forEach(t=>{t.style.height="";const e=t.offsetHeight;h=Math.max(h,e)});e.forEach(t=>{t.style.height=h+"px"})},0)}

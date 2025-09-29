@@ -36,93 +36,19 @@
     <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
 
     <!-- Favicon and Icons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-D_hlhyj_.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <link rel="manifest" href="/assets/site-SDQCe1QX.webmanifest">
     <meta name="theme-color" content="#012030">
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="../dist/height-harmony-min.js" as="script">
+    <link rel="preload" href="data:text/javascript;base64,dmFyIGhlaWdodEhhcm1vbnk9ZnVuY3Rpb24oKXsidXNlIHN0cmljdCI7cmV0dXJuIGZ1bmN0aW9uKHQpe2NvbnN0IGU9ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCh0KTswIT09ZS5sZW5ndGgmJihlLmZvckVhY2godD0+e3Quc3R5bGUuaGVpZ2h0PSIwcHgifSkscmVxdWVzdEFuaW1hdGlvbkZyYW1lKCgpPT57bGV0IHQ9MDtlLmZvckVhY2goZT0+e2Uuc3R5bGUuaGVpZ2h0PSIiO2NvbnN0IGg9ZS5vZmZzZXRIZWlnaHQ7dD1NYXRoLm1heCh0LGgpfSksZS5mb3JFYWNoKGU9PntlLnN0eWxlLmhlaWdodD10KyJweCJ9KX0pKX19KCk7Cg==" as="script">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
         as="style" crossorigin>
 
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script type="module">
-        import heightHarmony from '../dist/height-harmony-min.js';
-
-        // Function to reset all heights before reapplying harmony
-        function resetHeights() {
-            // Reset inner-block heights
-            document.querySelectorAll('.inner-block').forEach(function (element) {
-                element.style.height = 'auto';
-            });
-
-            // Reset block heights
-            document.querySelectorAll('.block-one, .block-two').forEach(function (element) {
-                element.style.height = 'auto';
-            });
-        }
-
-        // Function to apply all height harmonizations
-        function applyHeightHarmony() {
-            // Reset heights first to get natural dimensions
-            resetHeights();
-
-            // Use requestAnimationFrame for better browser synchronization
-            requestAnimationFrame(() => {
-                // Apply height harmony to content blocks first
-                heightHarmony('.block-one');
-                heightHarmony('.block-two');
-
-                // Then apply to parent containers
-                heightHarmony('.inner-block');
-            });
-        }
-
-        // Function to handle resize events with proper timing
-        function handleResize() {
-            // Reset heights immediately
-            resetHeights();
-
-            // Use a longer delay for resize to ensure layout has settled
-            setTimeout(() => {
-                requestAnimationFrame(() => {
-                    // Apply height harmony to content blocks first
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-
-                    // Then apply to parent containers
-                    heightHarmony('.inner-block');
-                });
-            }, 50);
-        }
-
-        // Initialize height harmony when the DOM is ready
-        document.addEventListener('DOMContentLoaded', function () {
-            applyHeightHarmony();
-        });
-
-        // Create a variable to store the timeout ID
-        let resizeTimeout;
-
-        // Handle window resize with vanilla JavaScript
-        window.addEventListener('resize', function () {
-            // Clear any existing timeout
-            clearTimeout(resizeTimeout);
-
-            // Set a timeout to debounce resize events
-            resizeTimeout = setTimeout(handleResize, 150);
-        });
-
-        // Also handle orientation change for mobile devices
-        window.addEventListener('orientationchange', function () {
-            setTimeout(handleResize, 300);
-        });
-    </script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -142,6 +68,8 @@
             }
         }
         </script>
+  <script type="module" crossorigin src="/assets/index-DHyRkMry.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B3im2oov.css">
 </head>
 
 <body>
