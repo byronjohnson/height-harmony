@@ -59,6 +59,13 @@ heightHarmony('.card');
 heightHarmony('.feature-box');
 ```
 
+## Version Information
+
+```javascript
+// Check the current version
+console.log(heightHarmony.version); // "1.0.0"
+```
+
 ## ES Module Usage
 
 ### Browser ES Modules
