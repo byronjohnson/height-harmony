@@ -14,8 +14,8 @@ function heightHarmony(selector) {
         element.style.height = '0px';
     });
 
-    // Small delay to ensure the browser has applied the 0px height
-    setTimeout(() => {
+    // Use requestAnimationFrame for better browser synchronization
+    requestAnimationFrame(() => {
         // Reset heights to auto to get natural heights
         let maxHeight = 0;
 
@@ -35,7 +35,7 @@ function heightHarmony(selector) {
         elements.forEach(element => {
             element.style.height = maxHeight + 'px';
         });
-    }, 0);
+    });
 }
 
 // Export the function as the default export

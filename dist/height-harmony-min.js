@@ -1,0 +1,1 @@
+this.heightHarmony=function(){"use strict";return function(t){const e=document.querySelectorAll(t);0!==e.length&&(e.forEach(t=>{t.style.height="0px"}),requestAnimationFrame(()=>{let t=0;e.forEach(e=>{e.style.height="";const h=e.offsetHeight;t=Math.max(t,h)}),e.forEach(e=>{e.style.height=t+"px"})}))}}();

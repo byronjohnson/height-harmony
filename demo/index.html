@@ -45,7 +45,7 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="../height-harmony.js" as="script">
+    <link rel="preload" href="../dist/height-harmony-min.js" as="script">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
         as="style" crossorigin>
 
@@ -72,15 +72,33 @@
             // Reset heights first to get natural dimensions
             resetHeights();
 
-            // Small delay to allow layout to settle before measuring
-            setTimeout(function () {
+            // Use requestAnimationFrame for better browser synchronization
+            requestAnimationFrame(() => {
                 // Apply height harmony to content blocks first
                 heightHarmony('.block-one');
                 heightHarmony('.block-two');
 
                 // Then apply to parent containers
                 heightHarmony('.inner-block');
-            }, 10);
+            });
+        }
+
+        // Function to handle resize events with proper timing
+        function handleResize() {
+            // Reset heights immediately
+            resetHeights();
+
+            // Use a longer delay for resize to ensure layout has settled
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    // Apply height harmony to content blocks first
+                    heightHarmony('.block-one');
+                    heightHarmony('.block-two');
+
+                    // Then apply to parent containers
+                    heightHarmony('.inner-block');
+                });
+            }, 50);
         }
 
         // Initialize height harmony when the DOM is ready
@@ -96,17 +114,13 @@
             // Clear any existing timeout
             clearTimeout(resizeTimeout);
 
-            // Set a new timeout with proper reset and reapplication
-            resizeTimeout = setTimeout(function () {
-                applyHeightHarmony();
-            }, 150);
+            // Set a timeout to debounce resize events
+            resizeTimeout = setTimeout(handleResize, 150);
         });
 
         // Also handle orientation change for mobile devices
         window.addEventListener('orientationchange', function () {
-            setTimeout(function () {
-                applyHeightHarmony();
-            }, 300);
+            setTimeout(handleResize, 300);
         });
     </script>
     <script type="application/ld+json">
