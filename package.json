@@ -1,7 +1,10 @@
 {
-  "name": "height-harmony",
+  "name": "@byronjohnson/height-harmony",
   "version": "1.0.1",
   "description": "A lightweight, zero-dependency JavaScript utility for equalizing element heights",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "main": "dist/height-harmony-min.js",
   "module": "height-harmony.js",
   "exports": {
