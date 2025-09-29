@@ -2,8 +2,15 @@
   "name": "height-harmony",
   "version": "1.0.0",
   "description": "A lightweight, zero-dependency JavaScript utility for equalizing element heights",
-  "main": "height-harmony.js",
+  "main": "dist/height-harmony-min.js",
   "module": "height-harmony.js",
+  "exports": {
+    ".": {
+      "import": "./height-harmony.js",
+      "require": "./dist/height-harmony-min.js",
+      "browser": "./dist/height-harmony-min.js"
+    }
+  },
   "browser": "dist/height-harmony-min.js",
   "unpkg": "dist/height-harmony-min.js",
   "jsdelivr": "dist/height-harmony-min.js",
