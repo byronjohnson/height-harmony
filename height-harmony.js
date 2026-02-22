@@ -45,21 +45,6 @@ function debounce(fn, wait) {
   };
 }
 
-/**
- * Reads the true natural height of an element without any inline height set.
- * Temporarily removes height / min-height, reads scrollHeight, then restores.
- * @param {HTMLElement} el
- * @returns {number}
- */
-function naturalHeight(el) {
-  const prev = el.style.cssText;
-  el.style.setProperty('height', '', 'important');
-  el.style.setProperty('min-height', '', 'important');
-  const h = el.scrollHeight;
-  el.style.cssText = prev;
-  return h;
-}
-
 // ─── HeightHarmonyInstance ───────────────────────────────────────────────────
 
 class HeightHarmonyInstance {
@@ -77,6 +62,7 @@ class HeightHarmonyInstance {
     this._destroyed = false;
     this._resizeObserver = null;
     this._mutationObserver = null;
+    this._cleanupFallback = null;
     this._debouncedSync = debounce(this._sync.bind(this), this._opts.debounce);
 
     // Run immediately
@@ -102,8 +88,8 @@ class HeightHarmonyInstance {
   }
 
   /**
-   * Tears down all observers, removes inline height styles set by this instance,
-   * and marks the instance as destroyed.
+   * Tears down all observers, removes inline height/transition styles set by
+   * this instance, and marks the instance as destroyed.
    * @returns {this}
    */
   destroy() {
@@ -119,11 +105,20 @@ class HeightHarmonyInstance {
       this._mutationObserver = null;
     }
 
-    // Remove inline styles we set
+    // Clean up window event listeners added by the ResizeObserver fallback
+    if (this._cleanupFallback) {
+      this._cleanupFallback();
+      this._cleanupFallback = null;
+    }
+
+    // Remove all inline styles we set
     const prop = this._opts.minHeight ? 'min-height' : 'height';
     this._getElements().forEach(el => {
       el.style.removeProperty(prop);
       el.style.removeProperty('box-sizing');
+      if (this._opts.transitions) {
+        el.style.removeProperty('transition');
+      }
     });
 
     return this;
@@ -177,23 +172,19 @@ class HeightHarmonyInstance {
     // Step 2: Force a synchronous layout read (single batch)
     // We use offsetHeight (includes padding/border, respects box model)
     let maxH = 0;
-    const heights = elements.map(el => {
+    elements.forEach(el => {
       const h = el.offsetHeight;
       if (h > maxH) maxH = h;
-      return h;
     });
 
     if (maxH === 0) return;
 
     // Step 3: Apply the max height to all elements
-    elements.forEach((el, i) => {
-      // Skip elements that are already the right height (avoids layout thrash)
-      if (parseInt(el.style.getPropertyValue(prop), 10) !== maxH) {
-        if (this._opts.transitions) {
-          el.style.setProperty('transition', `${prop} 0.2s ease`, '');
-        }
-        el.style.setProperty(prop, `${maxH}px`, 'important');
+    elements.forEach(el => {
+      if (this._opts.transitions) {
+        el.style.setProperty('transition', `${prop} 0.2s ease`, '');
       }
+      el.style.setProperty(prop, `${maxH}px`, 'important');
     });
   }
 
@@ -219,10 +210,15 @@ class HeightHarmonyInstance {
     } else {
       // Fallback for browsers without ResizeObserver (very old Safari, etc.)
       const handler = debounce(this._sync.bind(this), Math.max(this._opts.debounce, 150));
+      const orientationHandler = () => setTimeout(() => this._sync(), 300);
+
       window.addEventListener('resize', handler, { passive: true });
-      window.addEventListener('orientationchange', () => setTimeout(() => this._sync(), 300), { passive: true });
+      window.addEventListener('orientationchange', orientationHandler, { passive: true });
+
+      // Store cleanup so destroy() can remove both listeners
       this._cleanupFallback = () => {
         window.removeEventListener('resize', handler);
+        window.removeEventListener('orientationchange', orientationHandler);
       };
     }
 

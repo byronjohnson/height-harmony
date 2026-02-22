@@ -38,6 +38,7 @@ class HeightHarmonyInstance {
     this._destroyed = false;
     this._resizeObserver = null;
     this._mutationObserver = null;
+    this._cleanupFallback = null;
     this._debouncedSync = debounce(this._sync.bind(this), this._opts.debounce);
     this._sync();
     if (this._opts.watch) {
@@ -56,8 +57,8 @@ class HeightHarmonyInstance {
     return this;
   }
   /**
-   * Tears down all observers, removes inline height styles set by this instance,
-   * and marks the instance as destroyed.
+   * Tears down all observers, removes inline height/transition styles set by
+   * this instance, and marks the instance as destroyed.
    * @returns {this}
    */
   destroy() {
@@ -71,10 +72,17 @@ class HeightHarmonyInstance {
       this._mutationObserver.disconnect();
       this._mutationObserver = null;
     }
+    if (this._cleanupFallback) {
+      this._cleanupFallback();
+      this._cleanupFallback = null;
+    }
     const prop = this._opts.minHeight ? "min-height" : "height";
     this._getElements().forEach((el) => {
       el.style.removeProperty(prop);
       el.style.removeProperty("box-sizing");
+      if (this._opts.transitions) {
+        el.style.removeProperty("transition");
+      }
     });
     return this;
   }
@@ -114,19 +122,16 @@ class HeightHarmonyInstance {
       el.style.setProperty("box-sizing", "border-box", "important");
     });
     let maxH = 0;
-    elements.map((el) => {
+    elements.forEach((el) => {
       const h = el.offsetHeight;
       if (h > maxH) maxH = h;
-      return h;
     });
     if (maxH === 0) return;
-    elements.forEach((el, i) => {
-      if (parseInt(el.style.getPropertyValue(prop), 10) !== maxH) {
-        if (this._opts.transitions) {
-          el.style.setProperty("transition", `${prop} 0.2s ease`, "");
-        }
-        el.style.setProperty(prop, `${maxH}px`, "important");
+    elements.forEach((el) => {
+      if (this._opts.transitions) {
+        el.style.setProperty("transition", `${prop} 0.2s ease`, "");
       }
+      el.style.setProperty(prop, `${maxH}px`, "important");
     });
   }
   /**
@@ -146,10 +151,12 @@ class HeightHarmonyInstance {
       observe();
     } else {
       const handler = debounce(this._sync.bind(this), Math.max(this._opts.debounce, 150));
+      const orientationHandler = () => setTimeout(() => this._sync(), 300);
       window.addEventListener("resize", handler, { passive: true });
-      window.addEventListener("orientationchange", () => setTimeout(() => this._sync(), 300), { passive: true });
+      window.addEventListener("orientationchange", orientationHandler, { passive: true });
       this._cleanupFallback = () => {
         window.removeEventListener("resize", handler);
+        window.removeEventListener("orientationchange", orientationHandler);
       };
     }
     if (typeof MutationObserver !== "undefined") {

@@ -4,7 +4,7 @@
 
 Zero dependencies. ResizeObserver-powered. Automatically responsive. Drop it in and forget it.
 
-[![npm version](https://img.shields.io/badge/npm-v2.0.0-45c4b0?style=flat-square)](https://www.npmjs.com/package/@byronjohnson/height-harmony)
+[![npm version](https://img.shields.io/badge/npm-v2.0.0-45c4b0?style=flat-square)](https://www.npmjs.com/package/height-harmony)
 [![License: MIT](https://img.shields.io/badge/License-MIT-dafdba?style=flat-square)](LICENSE)
 [![gzip size](https://img.shields.io/badge/gzip-%3C2KB-9aeba3?style=flat-square)](#)
 
@@ -32,13 +32,13 @@ Zero dependencies. ResizeObserver-powered. Automatically responsive. Drop it in 
 ### npm / yarn / pnpm
 
 ```bash
-npm install @byronjohnson/height-harmony
+npm install height-harmony
 ```
 
 ### CDN (UMD — no bundler needed)
 
 ```html
-<script src="https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony-min.js"></script>
+<script src="https://unpkg.com/height-harmony@2/dist/height-harmony-min.js"></script>
 <script>
   heightHarmony('.card');
 </script>
@@ -48,7 +48,7 @@ npm install @byronjohnson/height-harmony
 
 ```html
 <script type="module">
-  import heightHarmony from 'https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony.es.js';
+  import heightHarmony from 'https://unpkg.com/height-harmony@2/dist/height-harmony.es.js';
   heightHarmony('.card');
 </script>
 ```
@@ -58,7 +58,7 @@ npm install @byronjohnson/height-harmony
 ## Quick Start
 
 ```javascript
-import heightHarmony from '@byronjohnson/height-harmony';
+import heightHarmony from 'height-harmony';
 
 // Basic — equalize all matching elements
 heightHarmony('.card');
@@ -168,7 +168,7 @@ Scans the entire document for elements with `data-hh-group` attributes and harmo
 ```
 
 ```javascript
-import heightHarmony from '@byronjohnson/height-harmony';
+import heightHarmony from 'height-harmony';
 
 // One call handles all groups
 const instances = heightHarmony.autoInit({ debounce: 100 });
@@ -191,7 +191,7 @@ console.log(heightHarmony.version); // "2.0.0"
 
 ```jsx
 import { useEffect, useRef } from 'react';
-import heightHarmony from '@byronjohnson/height-harmony';
+import heightHarmony from 'height-harmony';
 
 function CardGrid({ cards }) {
   useEffect(() => {
@@ -211,7 +211,7 @@ function CardGrid({ cards }) {
 
 ```javascript
 import { onMounted, onUnmounted, watch } from 'vue';
-import heightHarmony from '@byronjohnson/height-harmony';
+import heightHarmony from 'height-harmony';
 
 export function useHeightHarmony(selector, options = {}) {
   let instance = null;
@@ -224,7 +224,7 @@ export function useHeightHarmony(selector, options = {}) {
 ### Vanilla JS — DOMContentLoaded
 
 ```javascript
-import heightHarmony from '@byronjohnson/height-harmony';
+import heightHarmony from 'height-harmony';
 
 document.addEventListener('DOMContentLoaded', () => {
   heightHarmony('.card');          // ResizeObserver handles everything else

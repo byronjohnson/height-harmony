@@ -91,7 +91,7 @@
 
       <div class="hero-install" id="hero-install" aria-label="Install command">
         <span class="hero-install-prefix">$</span>
-        <span id="hero-install-cmd">npm install @byronjohnson/height-harmony</span>
+        <span id="hero-install-cmd">npm install height-harmony</span>
         <button class="hero-copy-btn" id="hero-copy-btn" aria-label="Copy install command"
           onclick="copyInstall()">Copy</button>
       </div>
@@ -328,7 +328,7 @@
       <!-- Basic -->
       <div class="tab-panel" id="tab-basic" role="tabpanel" aria-labelledby="tbtn-basic" aria-hidden="false">
         <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy basic usage code">Copy</button>
-        <pre><code id="code-basic"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+        <pre><code id="code-basic"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'height-harmony'</span><span class="tok-punct">;</span>
 
 <span class="tok-comment">// Equalize heights of all matching elements</span>
 <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
@@ -342,7 +342,7 @@ hh<span class="tok-punct">.</span><span class="tok-func">destroy</span>()<span c
       <!-- Options -->
       <div class="tab-panel" id="tab-options" role="tabpanel" aria-labelledby="tbtn-options" aria-hidden="true">
         <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy options usage code">Copy</button>
-        <pre><code id="code-options"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+        <pre><code id="code-options"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'height-harmony'</span><span class="tok-punct">;</span>
 
 <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span><span class="tok-punct">,</span> <span class="tok-punct">{</span>
   <span class="tok-comment">// Debounce ResizeObserver callbacks (ms)</span>
@@ -375,7 +375,7 @@ hh<span class="tok-punct">.</span><span class="tok-func">destroy</span>()<span c
 &lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"sidebar"</span>&gt;Widget B&lt;/<span class="tok-keyword">div</span>&gt;
 
 <span class="tok-comment">/* Then auto-init all groups with one call */</span>
-<span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+<span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'height-harmony'</span><span class="tok-punct">;</span>
 heightHarmony<span class="tok-punct">.</span><span class="tok-func">autoInit</span>()<span class="tok-punct">;</span>   <span class="tok-comment">// scans the whole document</span></code></pre>
       </div>
 
@@ -383,7 +383,7 @@ heightHarmony<span class="tok-punct">.</span><span class="tok-func">autoInit</sp
       <div class="tab-panel" id="tab-cdn" role="tabpanel" aria-labelledby="tbtn-cdn" aria-hidden="true">
         <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy CDN usage code">Copy</button>
         <pre><code id="code-cdn"><span class="tok-comment">&lt;!-- UMD / script tag — exposes window.heightHarmony --&gt;</span>
-&lt;<span class="tok-keyword">script</span> <span class="tok-param">src</span>=<span class="tok-string">"https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony-min.js"</span>&gt;&lt;/<span class="tok-keyword">script</span>&gt;
+&lt;<span class="tok-keyword">script</span> <span class="tok-param">src</span>=<span class="tok-string">"https://unpkg.com/height-harmony@2/dist/height-harmony-min.js"</span>&gt;&lt;/<span class="tok-keyword">script</span>&gt;
 &lt;<span class="tok-keyword">script</span>&gt;
   <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
 &lt;/<span class="tok-keyword">script</span>&gt;
@@ -391,7 +391,7 @@ heightHarmony<span class="tok-punct">.</span><span class="tok-func">autoInit</sp
 <span class="tok-comment">&lt;!-- ES Module via CDN --&gt;</span>
 &lt;<span class="tok-keyword">script</span> <span class="tok-param">type</span>=<span class="tok-string">"module"</span>&gt;
   <span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span>
-    <span class="tok-string">'https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony.es.js'</span><span class="tok-punct">;</span>
+    <span class="tok-string">'https://unpkg.com/height-harmony@2/dist/height-harmony.es.js'</span><span class="tok-punct">;</span>
   <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
 &lt;/<span class="tok-keyword">script</span>&gt;</code></pre>
       </div>
