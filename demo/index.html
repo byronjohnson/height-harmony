@@ -1,230 +1,500 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
-
+<html lang="en" class="no-js">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Height Harmony.js - Dynamic Height Balancing for Perfect Layouts</title>
-    <meta name="description"
-        content="A lightweight JavaScript library for dynamically harmonizing element heights. Create perfectly aligned layouts with automatic height balancing for responsive web design.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="JavaScript, height balancing, responsive design, layout, CSS, frontend, web development, equal heights, dynamic sizing">
-    <meta name="author" content="Height Harmony.js">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://username.github.io/height-harmony/demo/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://username.github.io/height-harmony/demo/">
-    <meta property="og:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
-    <meta property="og:description"
-        content="See Height Harmony.js in action! A lightweight JavaScript library that automatically balances element heights for perfect responsive layouts.">
-    <meta property="og:image" content="https://username.github.io/height-harmony/demo/og-image.png">
-    <meta property="og:site_name" content="Height Harmony.js">
+  <title>Height Harmony.js — Equal Height JavaScript Utility</title>
+  <meta name="description" content="The fastest, smartest equal-height JavaScript utility on the web. Zero dependencies, ResizeObserver-powered, and automatically responsive. Drop it in and forget it.">
+  <meta name="keywords" content="JavaScript, equal height, height harmony, responsive layout, CSS utility, frontend, ResizeObserver, zero dependency, auto resize">
+  <meta name="author" content="Byron Johnson">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://byronjohnson.github.io/height-harmony/demo/">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://username.github.io/height-harmony/demo/">
-    <meta property="twitter:title" content="Height Harmony.js - Dynamic Height Balancing Demo">
-    <meta property="twitter:description"
-        content="See Height Harmony.js in action! Automatic height balancing for perfect responsive layouts.">
-    <meta property="twitter:image" content="https://username.github.io/height-harmony/demo/twitter-card.png">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://byronjohnson.github.io/height-harmony/demo/">
+  <meta property="og:title" content="Height Harmony.js — Equal Height JavaScript Utility">
+  <meta property="og:description" content="The fastest, smartest equal-height JS utility. ResizeObserver-powered, zero-dependency, auto-responsive.">
+  <meta property="og:site_name" content="Height Harmony.js">
 
-    <!-- Favicon and Icons -->
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#012030">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://byronjohnson.github.io/height-harmony/demo/">
+  <meta name="twitter:title" content="Height Harmony.js — Equal Height JavaScript Utility">
+  <meta name="twitter:description" content="The fastest, smartest equal-height JS utility. ResizeObserver-powered, zero-dependency, auto-responsive.">
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="../dist/height-harmony-min.js" as="script">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
-        as="style" crossorigin>
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#012030">
 
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script type="module">
-        import heightHarmony from '../dist/height-harmony-min.js';
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        // Function to reset all heights before reapplying harmony
-        function resetHeights() {
-            // Reset inner-block heights
-            document.querySelectorAll('.inner-block').forEach(function (element) {
-                element.style.height = 'auto';
-            });
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
 
-            // Reset block heights
-            document.querySelectorAll('.block-one, .block-two').forEach(function (element) {
-                element.style.height = 'auto';
-            });
-        }
-
-        // Function to apply all height harmonizations
-        function applyHeightHarmony() {
-            // Reset heights first to get natural dimensions
-            resetHeights();
-
-            // Use requestAnimationFrame for better browser synchronization
-            requestAnimationFrame(() => {
-                // Apply height harmony to content blocks first
-                heightHarmony('.block-one');
-                heightHarmony('.block-two');
-
-                // Then apply to parent containers
-                heightHarmony('.inner-block');
-            });
-        }
-
-        // Function to handle resize events with proper timing
-        function handleResize() {
-            // Reset heights immediately
-            resetHeights();
-
-            // Use a longer delay for resize to ensure layout has settled
-            setTimeout(() => {
-                requestAnimationFrame(() => {
-                    // Apply height harmony to content blocks first
-                    heightHarmony('.block-one');
-                    heightHarmony('.block-two');
-
-                    // Then apply to parent containers
-                    heightHarmony('.inner-block');
-                });
-            }, 50);
-        }
-
-        // Initialize height harmony when the DOM is ready
-        document.addEventListener('DOMContentLoaded', function () {
-            applyHeightHarmony();
-        });
-
-        // Create a variable to store the timeout ID
-        let resizeTimeout;
-
-        // Handle window resize with vanilla JavaScript
-        window.addEventListener('resize', function () {
-            // Clear any existing timeout
-            clearTimeout(resizeTimeout);
-
-            // Set a timeout to debounce resize events
-            resizeTimeout = setTimeout(handleResize, 150);
-        });
-
-        // Also handle orientation change for mobile devices
-        window.addEventListener('orientationchange', function () {
-            setTimeout(handleResize, 300);
-        });
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Height Harmony.js",
-            "description": "A lightweight JavaScript library for dynamically harmonizing element heights in responsive web layouts",
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "Web Browser",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
-            },
-            "author": {
-                "@type": "Organization",
-                "name": "Height Harmony.js"
-            }
-        }
-        </script>
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Height Harmony.js",
+    "version": "2.0.0",
+    "description": "The fastest, smartest equal-height JavaScript utility. ResizeObserver-powered, zero dependencies, automatic responsiveness.",
+    "programmingLanguage": "JavaScript",
+    "runtimePlatform": "Web Browser",
+    "codeRepository": "https://github.com/byronjohnson/height-harmony",
+    "applicationCategory": "DeveloperApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "author": { "@type": "Person", "name": "Byron Johnson", "url": "https://byronj.me" },
+    "license": "https://opensource.org/licenses/MIT"
+  }
+  </script>
 </head>
 
 <body>
-    <header class="hero" role="banner">
-        <div class="hero-content">
-            <h1 class="hero-title">Height Harmony.js</h1>
-            <p class="hero-subtitle">Dynamic height balancing for perfectly aligned layouts</p>
-            <div class="demo-indicator" role="status" aria-label="Live demo indicator">
-                <div class="indicator-pulse" aria-hidden="true"></div>
-                <span class="indicator-text">Watch the magic happen as you resize the window</span>
-                <div class="indicator-pulse" aria-hidden="true"></div>
-            </div>
-        </div>
-    </header>
 
-    <main class="demo-section" role="main">
-        <div class="section-header">
-            <h2>Live Demo</h2>
-            <p>These content blocks automatically adjust their heights to create even heights across all content blocks,
-                creating perfect visual harmony.</p>
-        </div>
-        <section class="container" aria-label="Height Harmony demonstration with sample content blocks">
-            <div class="inner-block">
-                <div class="block-one">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper
-                    mauris. </div>
-                <div class="block-two">Phasellus quis nibh sed ante mollis facilisis ac sed justo. </div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et
-                    malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante.</div>
-                <div class="block-two">Aenean interdum ipsum massa, ac ultrices eros cursus rutrum. Quisque fermentum ac
-                    leo ac eleifend. In felis risus, accumsan vitae porttitor a, ultrices et sapien. Suspendisse
-                    potenti. Nullam id nulla neque. Pellentesque egestas, lectus id tincidunt facilisis, neque est
-                    molestie augue, vel elementum nulla mi et purus. </div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Class aptent taciti sociosqu ad litora torquent per conubia nostra</div>
-                <div class="block-two">per inceptos himenaeos.</div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Proin eget nunc nec nisi mattis molestie in ultrices urna. Cras tempus ipsum non
-                    justo fringilla, in suscipit ex fermentum.</div>
-                <div class="block-two">Cras metus neque, porttitor id accumsan ac, tincidunt eu est. Orci varius natoque
-                    penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Ut dapibus molestie lacus, nec sollicitudin eros molestie eget. Pellentesque in
-                    cursus ligula, vel volutpat diam.</div>
-                <div class="block-two">Mauris porta lacus id purus accumsan, et vulputate erat pretium. Donec eu
-                    vulputate velit.</div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Aliquam auctor magna a sem pulvinar, non finibus enim vestibulum. Nam a justo
-                    volutpat</div>
-                <div class="block-two">porttitor nisi at, pulvinar orci. Nulla aliquet porta odio, non vulputate mi
-                    cursus vel. Proin vel dolor vel sem sodales semper. </div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Cras sed diam volutpat, maximus urna quis, imperdiet sapien. Donec at mauris
-                    enim.</div>
-                <div class="block-two">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et
-                    malesuada </div>
-            </div>
-            <div class="inner-block">
-                <div class="block-one">Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed
-                    eleifend ante. Aenean interdum ipsum massa,</div>
-                <div class="block-two">ac ultrices eros cursus rutrum.</div>
-            </div>
-        </section>
-    </main>
+<!-- ══════════════════════════════════════════════════════ HERO -->
+<header class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+    <div class="hero-orb"></div>
+  </div>
 
-    <footer class="footer" role="contentinfo">
-        <p>&copy; 2024 Height Harmony.js - Creating beautiful, balanced layouts</p>
-        <p><a class="github-link" href="https://github.com/byronjohnson/height-harmony"
-                aria-label="View Height Harmony.js on GitHub">View on GitHub <svg width="16" height="16"
-                    viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                    <path
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-                </svg></a></p>
-        <p>a <a href="https://byronj.me" target="_blank">byron johnson</a> project</p>
-    </footer>
+  <div class="hero-content">
+    <div class="hero-badge" aria-label="Version 2.0.0 — Now available">
+      <span class="hero-badge-dot" aria-hidden="true"></span>
+      v2.0.0 — Now Available
+    </div>
 
+    <h1 class="hero-title">Height Harmony</h1>
+
+    <p class="hero-subtitle">
+      The fastest, smartest equal-height JavaScript utility on the web.
+      ResizeObserver-powered, zero dependencies, automatically responsive.
+    </p>
+
+    <div class="hero-install" id="hero-install" aria-label="Install command">
+      <span class="hero-install-prefix">$</span>
+      <span id="hero-install-cmd">npm install @byronjohnson/height-harmony</span>
+      <button class="hero-copy-btn" id="hero-copy-btn" aria-label="Copy install command" onclick="copyInstall()">Copy</button>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#demo" id="hero-demo-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Live Demo
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/byronjohnson/height-harmony" target="_blank" rel="noopener noreferrer" id="hero-github-link" aria-label="View source on GitHub">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════ STATS -->
+<section class="stats-bar" aria-label="Key statistics">
+  <div class="stat-item">
+    <span class="stat-value">&lt;2KB</span>
+    <span class="stat-label">Minified + gzipped</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">0</span>
+    <span class="stat-label">Dependencies</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">Auto</span>
+    <span class="stat-label">ResizeObserver</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-value">ESM + UMD</span>
+    <span class="stat-label">Module formats</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ HOW IT WORKS -->
+<section class="how-section" id="how-it-works" aria-labelledby="how-title">
+  <p class="section-label">How It Works</p>
+  <h2 class="section-title" id="how-title">Three steps, zero effort</h2>
+  <p class="section-desc">Height Harmony automatically syncs element heights using the most efficient browser APIs available.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-icon" aria-hidden="true">📐</div>
+      <p class="step-num">Step 01</p>
+      <h3 class="step-title">Reset &amp; Measure</h3>
+      <p class="step-body">Inline heights are cleared and natural scrollHeights are measured in a single synchronous layout pass to avoid reflows.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon" aria-hidden="true">🎯</div>
+      <p class="step-num">Step 02</p>
+      <h3 class="step-title">Find the Max</h3>
+      <p class="step-body">The tallest element in the group is identified. All measurements happen in one batch read to minimize layout thrashing.</p>
+    </div>
+    <div class="step">
+      <div class="step-icon" aria-hidden="true">✨</div>
+      <p class="step-num">Step 03</p>
+      <h3 class="step-title">Watch &amp; React</h3>
+      <p class="step-body">ResizeObserver and MutationObserver keep heights in sync automatically — no window resize listeners needed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ LIVE DEMO -->
+<section class="demo-section" id="demo" aria-labelledby="demo-title">
+
+  <p class="section-label">Interactive Demo</p>
+  <h2 class="section-title" id="demo-title">See it in action</h2>
+  <p class="section-desc">All cards in this grid share equal heights automatically. Try adding cards, toggling the utility on/off, or resizing the window.</p>
+
+  <!-- Controls -->
+  <div class="demo-controls" role="group" aria-label="Demo controls">
+    <div class="controls-left">
+      <div class="status-badge active" id="demo-status" role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="demo-status-text">Active</span>
+      </div>
+      <button class="ctrl-btn primary-btn" id="btn-add" onclick="addCard()" aria-label="Add a new card to the grid">
+        + Add Card
+      </button>
+      <button class="ctrl-btn" id="btn-remove" onclick="removeCard()" aria-label="Remove the last card from the grid">
+        − Remove Card
+      </button>
+      <button class="ctrl-btn" id="btn-refresh" onclick="manualRefresh()" aria-label="Manually refresh height harmonization">
+        ↺ Refresh
+      </button>
+    </div>
+    <div class="controls-right">
+      <button class="ctrl-btn danger" id="btn-toggle" onclick="toggleHarmony()" aria-label="Toggle height harmonization on or off">
+        ⏸ Toggle Off
+      </button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="demo-grid" id="demo-grid" aria-label="Height Harmony demonstration grid">
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae ullamcorper mauris, at feugiat libero.</div>
+        <div class="content-block beta">Phasellus quis nibh sed ante mollis facilisis.</div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Nulla nunc nulla, tempus et venenatis iaculis, sollicitudin id magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Maecenas sed eleifend ante.</div>
+        <div class="content-block beta">Aenean interdum ipsum massa, ac ultrices eros cursus rutrum. Quisque fermentum ac leo ac eleifend. In felis risus, accumsan vitae porttitor a, ultrices et sapien. Suspendisse potenti.</div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</div>
+        <div class="content-block beta">Per inceptos himenaeos. Vivamus feugiat nisi nec urna cursus, in fermentum augue vestibulum.</div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Proin eget nunc nec nisi mattis molestie in ultrices urna. Cras tempus ipsum non justo fringilla, in suscipit ex fermentum.</div>
+        <div class="content-block beta">Cras metus neque, porttitor id accumsan ac, tincidunt eu est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Ut dapibus molestie lacus, nec sollicitudin eros molestie eget. Pellentesque in cursus ligula, vel volutpat diam.</div>
+        <div class="content-block beta">Mauris porta lacus id purus accumsan, et vulputate erat pretium. Donec eu vulputate velit.</div>
+      </div>
+    </div>
+
+    <div class="demo-card" data-hh-group="demo">
+      <div class="card-content">
+        <div class="content-block alpha">Aliquam auctor magna a sem pulvinar, non finibus enim vestibulum. Nam a justo volutpat.</div>
+        <div class="content-block beta">Porttitor nisi at pulvinar orci. Nulla aliquet porta odio, non vulputate mi cursus vel. Proin vel dolor vel sem sodales semper accumsan vitae porttitor.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ FEATURES -->
+<section class="features-section" aria-labelledby="features-title">
+  <p class="section-label">Why Height Harmony</p>
+  <h2 class="section-title" id="features-title">Built for real-world layouts</h2>
+  <p class="section-desc">Everything you need — nothing you don't.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">👁️</span>
+      <h3 class="feature-title">ResizeObserver</h3>
+      <p class="feature-body">Automatically re-syncs when any element changes size. No window resize listeners needed.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">🔄</span>
+      <h3 class="feature-title">MutationObserver</h3>
+      <p class="feature-body">Watches the DOM for new elements. Works seamlessly with AJAX, infinite scroll, and dynamic content.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">📱</span>
+      <h3 class="feature-title">Breakpoint Support</h3>
+      <p class="feature-body">Disable equalizing below a viewport width — let mobile layouts stack naturally.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">🧹</span>
+      <h3 class="feature-title">Clean API</h3>
+      <p class="feature-body"><code>refresh()</code> to re-trigger manually, <code>destroy()</code> to tear down observers and restore natural heights.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">⚡</span>
+      <h3 class="feature-title">Zero Thrash</h3>
+      <p class="feature-body">All height reads happen in a single synchronous batch. Writes follow immediately. No interleaved read/write cycles.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon" aria-hidden="true">📦</span>
+      <h3 class="feature-title">ESM + UMD</h3>
+      <p class="feature-body">Works as an ES import, CommonJS require, or plain script tag. No bundler required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ CODE SNIPPETS -->
+<section class="code-section" id="usage" aria-labelledby="code-title">
+  <p class="section-label">Usage</p>
+  <h2 class="section-title" id="code-title">Get started in seconds</h2>
+  <p class="section-desc">Drop it in however you prefer.</p>
+
+  <div class="code-tabs" role="tablist" aria-label="Code usage examples">
+
+    <div class="tab-list" role="tablist">
+      <button class="tab-btn" role="tab" aria-selected="true"  aria-controls="tab-basic"      id="tbtn-basic"     onclick="switchTab(this, 'tab-basic')">Basic</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-options"    id="tbtn-options"   onclick="switchTab(this, 'tab-options')">With Options</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-attribute"  id="tbtn-attribute" onclick="switchTab(this, 'tab-attribute')">HTML Attribute</button>
+      <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-cdn"        id="tbtn-cdn"       onclick="switchTab(this, 'tab-cdn')">CDN / Script Tag</button>
+    </div>
+
+    <!-- Basic -->
+    <div class="tab-panel" id="tab-basic" role="tabpanel" aria-labelledby="tbtn-basic" aria-hidden="false">
+      <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy basic usage code">Copy</button>
+      <pre><code id="code-basic"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+
+<span class="tok-comment">// Equalize heights of all matching elements</span>
+<span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
+
+<span class="tok-comment">// Returns an instance with refresh() and destroy()</span>
+<span class="tok-keyword">const</span> hh <span class="tok-punct">=</span> <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.feature-box'</span>)<span class="tok-punct">;</span>
+hh<span class="tok-punct">.</span><span class="tok-func">refresh</span>()<span class="tok-punct">;</span>   <span class="tok-comment">// manually re-trigger</span>
+hh<span class="tok-punct">.</span><span class="tok-func">destroy</span>()<span class="tok-punct">;</span>   <span class="tok-comment">// remove observers &amp; restore heights</span></code></pre>
+    </div>
+
+    <!-- Options -->
+    <div class="tab-panel" id="tab-options" role="tabpanel" aria-labelledby="tbtn-options" aria-hidden="true">
+      <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy options usage code">Copy</button>
+      <pre><code id="code-options"><span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+
+<span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span><span class="tok-punct">,</span> <span class="tok-punct">{</span>
+  <span class="tok-comment">// Debounce ResizeObserver callbacks (ms)</span>
+  debounce<span class="tok-punct">:</span> <span class="tok-num">100</span><span class="tok-punct">,</span>
+
+  <span class="tok-comment">// Disable below 768px — let mobile stack naturally</span>
+  breakpoint<span class="tok-punct">:</span> <span class="tok-num">768</span><span class="tok-punct">,</span>
+
+  <span class="tok-comment">// Use min-height so items can still grow taller</span>
+  minHeight<span class="tok-punct">:</span> <span class="tok-keyword">true</span><span class="tok-punct">,</span>
+
+  <span class="tok-comment">// Smooth CSS transition on height changes</span>
+  transitions<span class="tok-punct">:</span> <span class="tok-keyword">true</span><span class="tok-punct">,</span>
+
+  <span class="tok-comment">// Set false to disable auto-watching (manual only)</span>
+  watch<span class="tok-punct">:</span> <span class="tok-keyword">true</span>
+<span class="tok-punct">}</span>)<span class="tok-punct">;</span></code></pre>
+    </div>
+
+    <!-- Attribute -->
+    <div class="tab-panel" id="tab-attribute" role="tabpanel" aria-labelledby="tbtn-attribute" aria-hidden="true">
+      <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy attribute usage code">Copy</button>
+      <pre><code id="code-attribute"><span class="tok-comment">&lt;!-- Mark groups with data-hh-group in your HTML --&gt;</span>
+&lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"cards"</span>&gt;Card 1&lt;/<span class="tok-keyword">div</span>&gt;
+&lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"cards"</span>&gt;Card 2&lt;/<span class="tok-keyword">div</span>&gt;
+&lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"cards"</span>&gt;Card 3&lt;/<span class="tok-keyword">div</span>&gt;
+
+<span class="tok-comment">&lt;!-- Multiple groups on the same page --&gt;</span>
+&lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"sidebar"</span>&gt;Widget A&lt;/<span class="tok-keyword">div</span>&gt;
+&lt;<span class="tok-keyword">div</span> <span class="tok-param">data-hh-group</span>=<span class="tok-string">"sidebar"</span>&gt;Widget B&lt;/<span class="tok-keyword">div</span>&gt;
+
+<span class="tok-comment">/* Then auto-init all groups with one call */</span>
+<span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span> <span class="tok-string">'@byronjohnson/height-harmony'</span><span class="tok-punct">;</span>
+heightHarmony<span class="tok-punct">.</span><span class="tok-func">autoInit</span>()<span class="tok-punct">;</span>   <span class="tok-comment">// scans the whole document</span></code></pre>
+    </div>
+
+    <!-- CDN -->
+    <div class="tab-panel" id="tab-cdn" role="tabpanel" aria-labelledby="tbtn-cdn" aria-hidden="true">
+      <button class="code-copy-btn" onclick="copyCode(this)" aria-label="Copy CDN usage code">Copy</button>
+      <pre><code id="code-cdn"><span class="tok-comment">&lt;!-- UMD / script tag — exposes window.heightHarmony --&gt;</span>
+&lt;<span class="tok-keyword">script</span> <span class="tok-param">src</span>=<span class="tok-string">"https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony-min.js"</span>&gt;&lt;/<span class="tok-keyword">script</span>&gt;
+&lt;<span class="tok-keyword">script</span>&gt;
+  <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
+&lt;/<span class="tok-keyword">script</span>&gt;
+
+<span class="tok-comment">&lt;!-- ES Module via CDN --&gt;</span>
+&lt;<span class="tok-keyword">script</span> <span class="tok-param">type</span>=<span class="tok-string">"module"</span>&gt;
+  <span class="tok-keyword">import</span> heightHarmony <span class="tok-keyword">from</span>
+    <span class="tok-string">'https://unpkg.com/@byronjohnson/height-harmony@2/dist/height-harmony.es.js'</span><span class="tok-punct">;</span>
+  <span class="tok-func">heightHarmony</span>(<span class="tok-string">'.card'</span>)<span class="tok-punct">;</span>
+&lt;/<span class="tok-keyword">script</span>&gt;</code></pre>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ FOOTER -->
+<footer class="footer" role="contentinfo">
+  <nav class="footer-links" aria-label="Footer links">
+    <a href="https://github.com/byronjohnson/height-harmony" target="_blank" rel="noopener noreferrer" id="footer-github">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      GitHub
+    </a>
+    <a href="https://github.com/byronjohnson/height-harmony/issues" target="_blank" rel="noopener noreferrer" id="footer-issues">Report Issue</a>
+    <a href="https://github.com/byronjohnson/height-harmony/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" id="footer-license">MIT License</a>
+  </nav>
+  <p class="footer-credit">Height Harmony.js v2.0.0 — a <a href="https://byronj.me" target="_blank" rel="noopener noreferrer">Byron Johnson</a> project</p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════ SCRIPTS -->
+<script type="module">
+  import heightHarmony from '../dist/height-harmony.es.js';
+
+  // ── Demo wiring ──────────────────────────────────────────────────────────────
+  let hhInstance = null;
+  let isActive = true;
+
+  function init() {
+    if (hhInstance) hhInstance.destroy();
+    hhInstance = heightHarmony('[data-hh-group="demo"]', {
+      debounce: 60,
+      transitions: true
+    });
+  }
+
+  init();
+
+  // ── Controls ─────────────────────────────────────────────────────────────────
+  const loremPool = [
+    'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+    'Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.',
+    'Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.',
+    'Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.',
+    'Fusce fermentum. Nullam varius nulla at odio. Phasellus porta. Fusce suscipit varius mi.',
+    'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+    'Nulla dui augue, dapibus eu, imperdiet vel, interdum et, enim. In id nulla vel nisi pretium.',
+    'Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.',
+  ];
+
+  let cardCount = 0;
+
+  window.addCard = function addCard() {
+    const grid = document.getElementById('demo-grid');
+    const card = document.createElement('div');
+    card.className = 'demo-card is-new';
+    card.setAttribute('data-hh-group', 'demo');
+
+    const a = loremPool[cardCount % loremPool.length];
+    const b = loremPool[(cardCount + 3) % loremPool.length];
+    cardCount++;
+
+    card.innerHTML = `
+      <div class="card-content">
+        <div class="content-block alpha">${a}</div>
+        <div class="content-block beta">${b}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+    // MutationObserver in heightHarmony will pick this up automatically,
+    // but we also call refresh to be explicit during the animation frame.
+    requestAnimationFrame(() => { if (hhInstance) hhInstance.refresh(); });
+  };
+
+  window.removeCard = function removeCard() {
+    const grid = document.getElementById('demo-grid');
+    const cards = grid.querySelectorAll('.demo-card');
+    if (cards.length > 1) {
+      cards[cards.length - 1].remove();
+      requestAnimationFrame(() => { if (hhInstance) hhInstance.refresh(); });
+    }
+  };
+
+  window.manualRefresh = function manualRefresh() {
+    if (hhInstance) hhInstance.refresh();
+    // Quick visual feedback on the button
+    const btn = document.getElementById('btn-refresh');
+    btn.style.color = 'var(--accent)';
+    setTimeout(() => btn.style.color = '', 600);
+  };
+
+  window.toggleHarmony = function toggleHarmony() {
+    const btn = document.getElementById('btn-toggle');
+    const status = document.getElementById('demo-status');
+    const statusText = document.getElementById('demo-status-text');
+
+    isActive = !isActive;
+
+    if (isActive) {
+      init();
+      btn.textContent = '⏸ Toggle Off';
+      status.className = 'status-badge active';
+      statusText.textContent = 'Active';
+    } else {
+      if (hhInstance) hhInstance.destroy();
+      hhInstance = null;
+      btn.textContent = '▶ Toggle On';
+      status.className = 'status-badge inactive';
+      statusText.textContent = 'Inactive';
+    }
+  };
+
+  // ── Copy buttons ─────────────────────────────────────────────────────────────
+  window.copyInstall = function copyInstall() {
+    const text = document.getElementById('hero-install-cmd').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('hero-copy-btn');
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }).catch(() => {});
+  };
+
+  window.copyCode = function copyCode(btn) {
+    const panel = btn.closest('.tab-panel');
+    const text = panel.querySelector('code').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }).catch(() => {});
+  };
+
+  // ── Tab switching ─────────────────────────────────────────────────────────────
+  window.switchTab = function switchTab(clickedBtn, panelId) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.setAttribute('aria-hidden', 'true');
+    });
+    clickedBtn.setAttribute('aria-selected', 'true');
+    document.getElementById(panelId).setAttribute('aria-hidden', 'false');
+  };
+</script>
 
 </body>
-
 </html>

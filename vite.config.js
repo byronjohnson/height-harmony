@@ -6,23 +6,26 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'height-harmony.js'),
       name: 'heightHarmony',
-      fileName: 'height-harmony-min',
-      formats: ['es']
+      fileName: (format) =>
+        format === 'umd' ? 'height-harmony-min.js' : `height-harmony.${format}.js`,
+      formats: ['es', 'umd'],
     },
     outDir: 'dist',
     emptyOutDir: true,
     minify: 'terser',
     terserOptions: {
-      compress: true,
-      mangle: true
+      compress: {
+        drop_console: false,
+        passes: 2,
+      },
+      mangle: true,
     },
     rollupOptions: {
       output: {
-        // Ensure the function is available globally for traditional script usage
+        // For UMD/IIFE, expose as global `heightHarmony`
         name: 'heightHarmony',
-        entryFileNames: 'height-harmony-min.js',
-        extend: true
-      }
-    }
-  }
+        exports: 'named',
+      },
+    },
+  },
 });

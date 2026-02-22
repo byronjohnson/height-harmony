@@ -1,22 +1,12 @@
-function heightHarmony(selector) {
-  const elements = document.querySelectorAll(selector);
-  if (elements.length === 0) return;
-  elements.forEach((element) => {
-    element.style.height = "0px";
-  });
-  requestAnimationFrame(() => {
-    let maxHeight = 0;
-    elements.forEach((element) => {
-      element.style.height = "";
-      const elementHeight = element.offsetHeight;
-      maxHeight = Math.max(maxHeight, elementHeight);
-    });
-    elements.forEach((element) => {
-      element.style.height = maxHeight + "px";
-    });
-  });
-}
-heightHarmony.version = "1.0.0";
-export {
-  heightHarmony as default
-};
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).heightHarmony={})}(this,function(e){"use strict";
+/**
+   * Height Harmony v2.0.0
+   * The fastest, smartest equal-height JavaScript utility on the web.
+   *
+   * Automatically synchronizes element heights using ResizeObserver and
+   * MutationObserver — no manual resize listeners needed.
+   *
+   * @author Byron Johnson
+   * @license MIT
+   * @see https://byronjohnson.github.io/height-harmony/demo/
+   */function t(e,t){let s=null;return function(...i){null!==s&&clearTimeout(s),t>0?s=setTimeout(()=>{s=null,requestAnimationFrame(()=>e.apply(this,i))},t):requestAnimationFrame(()=>e.apply(this,i))}}class s{constructor(e,s={}){this._target=e,this._opts=Object.assign({debounce:0,minHeight:!1,breakpoint:0,watch:!0,transitions:!0},s),this._destroyed=!1,this._resizeObserver=null,this._mutationObserver=null,this._debouncedSync=t(this._sync.bind(this),this._opts.debounce),this._sync(),this._opts.watch&&this._setupObservers()}refresh(){return this._destroyed||this._sync(),this}destroy(){if(this._destroyed)return this;this._destroyed=!0,this._resizeObserver&&(this._resizeObserver.disconnect(),this._resizeObserver=null),this._mutationObserver&&(this._mutationObserver.disconnect(),this._mutationObserver=null);const e=this._opts.minHeight?"min-height":"height";return this._getElements().forEach(t=>{t.style.removeProperty(e),t.style.removeProperty("box-sizing")}),this}_getElements(){return"string"==typeof this._target?Array.from(document.querySelectorAll(this._target)):this._target instanceof NodeList||Array.isArray(this._target)?Array.from(this._target):this._target instanceof HTMLElement?[this._target]:[]}_sync(){if(this._destroyed)return;const e=this._getElements();if(0===e.length)return;if(this._opts.breakpoint>0&&window.innerWidth<this._opts.breakpoint){const t=this._opts.minHeight?"min-height":"height";return void e.forEach(e=>e.style.removeProperty(t))}const t=this._opts.minHeight?"min-height":"height";e.forEach(e=>{e.style.setProperty(t,"","important"),e.style.setProperty("box-sizing","border-box","important")});let s=0;e.map(e=>{const t=e.offsetHeight;return t>s&&(s=t),t}),0!==s&&e.forEach((e,i)=>{parseInt(e.style.getPropertyValue(t),10)!==s&&(this._opts.transitions&&e.style.setProperty("transition",`${t} 0.2s ease`,""),e.style.setProperty(t,`${s}px`,"important"))})}_setupObservers(){if("undefined"!=typeof ResizeObserver)this._resizeObserver=new ResizeObserver(e=>{e.length>0&&this._debouncedSync()}),(()=>{this._getElements().forEach(e=>this._resizeObserver.observe(e))})();else{const e=t(this._sync.bind(this),Math.max(this._opts.debounce,150));window.addEventListener("resize",e,{passive:!0}),window.addEventListener("orientationchange",()=>setTimeout(()=>this._sync(),300),{passive:!0}),this._cleanupFallback=()=>{window.removeEventListener("resize",e)}}if("undefined"!=typeof MutationObserver){const e=this._getElements(),t=new Set(e.map(e=>e.parentElement).filter(Boolean));t.size>0&&(this._mutationObserver=new MutationObserver(e=>{e.some(e=>e.addedNodes.length>0||e.removedNodes.length>0)&&(this._debouncedSync(),this._resizeObserver&&this._getElements().forEach(e=>{try{this._resizeObserver.observe(e)}catch(t){}}))}),t.forEach(e=>{this._mutationObserver.observe(e,{childList:!0,subtree:!1})}))}}}function i(e,t){return new s(e,t)}i.version="2.0.0",i.autoInit=function(e={}){const t=document.querySelectorAll("[data-hh-group]");if(0===t.length)return[];const i=new Map;t.forEach(e=>{const t=e.getAttribute("data-hh-group");i.has(t)||i.set(t,[]),i.get(t).push(e)});const r=[];return i.forEach(t=>{r.push(new s(t,e))}),r},e.HeightHarmonyInstance=s,e.default=i,Object.defineProperties(e,{__esModule:{value:!0},[Symbol.toStringTag]:{value:"Module"}})});
