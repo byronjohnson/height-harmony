@@ -27,6 +27,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build",
+    "build:demo": "cp dist/height-harmony-min.js demo/height-harmony-min.js && vite build --config demo/vite.config.js && cp dist/height-harmony-min.js demo-dist/height-harmony-min.js",
+    "build:all": "npm run build && npm run build:demo",
     "dev": "vite build --watch",
     "prepublishOnly": "npm run build"
   },

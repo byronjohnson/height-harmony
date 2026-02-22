@@ -1,0 +1,6 @@
+{
+    "framework": null,
+    "buildCommand": "npm run build:all",
+    "outputDirectory": "demo-dist",
+    "installCommand": "npm install"
+}
