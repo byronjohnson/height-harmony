@@ -1,22 +1,8 @@
 # ────────────────────────────────────────────────────────────────
 # Git export attributes
-# Files/directories marked export-ignore are excluded from the
-# auto-generated .tar.gz / .zip archives GitHub produces for
-# releases and the "Download ZIP" button.
-#
-# The full repository (including demo/ and vercel.json) is still:
-#   • Cloned normally by Vercel for deployment
-#   • Visible in the GitHub UI
-#   • Available to contributors via git clone
-#
-# Only the downloadable release archives are affected.
+# Files marked export-ignore are excluded from the auto-generated
+# .tar.gz / .zip archives GitHub produces for releases.
 # ────────────────────────────────────────────────────────────────
 
-# Demo site — not part of the library distribution
-demo/           export-ignore
-
-# Vercel deployment config — infra file, not library-related
-vercel.json     export-ignore
-
-# Build tooling — users don't need this to use the library
+# Build tooling — users don't need this to consume the library
 vite.config.js  export-ignore
