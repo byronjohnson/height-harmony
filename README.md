@@ -38,7 +38,7 @@ npm install height-harmony
 ### CDN (UMD — no bundler needed)
 
 ```html
-<script src="https://unpkg.com/height-harmony@2/dist/height-harmony-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/height-harmony@2/dist/height-harmony-min.js"></script>
 <script>
   heightHarmony('.card');
 </script>
@@ -48,7 +48,7 @@ npm install height-harmony
 
 ```html
 <script type="module">
-  import heightHarmony from 'https://unpkg.com/height-harmony@2/dist/height-harmony.es.js';
+  import heightHarmony from 'https://cdn.jsdelivr.net/npm/height-harmony@2/dist/height-harmony.es.js';
   heightHarmony('.card');
 </script>
 ```
