@@ -61,9 +61,9 @@ This is a full rewrite of Height Harmony. The v1 API is preserved — `heightHar
 - **CDN URLs** — update any `<script src>` tags:
   ```html
   <!-- Before -->
-  <script src="https://unpkg.com/@byronjohnson/height-harmony@1/..."></script>
+  <script src="https://cdn.jsdelivr.net/npm/@byronjohnson/height-harmony@1/dist/height-harmony-min.js"></script>
   <!-- After -->
-  <script src="https://unpkg.com/height-harmony@2/dist/height-harmony-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/height-harmony@2/dist/height-harmony-min.js"></script>
   ```
 - **`_sync()` internals** — now uses a single-pass `forEach` for measuring heights instead of `map()` (removes an unused intermediate array allocation)
 

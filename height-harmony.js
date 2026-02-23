@@ -7,7 +7,7 @@
  *
  * @author Byron Johnson
  * @license MIT
- * @see https://byronjohnson.github.io/height-harmony/demo/
+ * @see https://heightharmony.byronj.me
  */
 
 /**
