@@ -8,7 +8,7 @@ Zero dependencies. ResizeObserver-powered. Automatically responsive. Drop it in 
 [![License: MIT](https://img.shields.io/badge/License-MIT-dafdba?style=flat-square)](LICENSE)
 [![gzip size](https://img.shields.io/badge/gzip-%3C2KB-9aeba3?style=flat-square)](#)
 
-**[View the interactive demo →](https://byronjohnson.github.io/height-harmony/demo/)**
+**[View the interactive demo →](https://heightharmony.byronj.me/)**
 
 ---
 
